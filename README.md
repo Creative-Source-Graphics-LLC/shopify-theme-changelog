@@ -1,5 +1,11 @@
 # Shopify Theme Changelog
 
+[![Marketplace](https://img.shields.io/badge/Marketplace-Shopify%20Theme%20Changelog-ffffff?style=flat&logo=github&logoColor=white&labelColor=000000)](https://github.com/marketplace/actions/shopify-theme-changelog)
+[![Release](https://img.shields.io/github/v/release/Creative-Source-Graphics-LLC/shopify-theme-changelog?style=flat&labelColor=000000&color=ffffff)](https://github.com/Creative-Source-Graphics-LLC/shopify-theme-changelog/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-ffffff?style=flat&labelColor=000000)](LICENSE)
+![Shopify themes](https://img.shields.io/badge/Shopify-themes-ffffff?style=flat&logo=shopify&logoColor=white&labelColor=000000)
+![Language: Liquid](https://img.shields.io/badge/Language-Liquid-ffffff?style=flat&labelColor=000000)
+
 A GitHub Action that keeps a `CHANGELOG.md` in your Shopify theme repo. Every push is recorded with the time, the branch, who pushed and each commit, so the whole team can see what changed and when.
 
 Built for repos connected to Shopify's GitHub integration: commits Shopify makes when someone saves in the theme editor ("Update from Shopify for theme ...") are labeled **Theme editor** and list the files they changed, so editor saves and code changes are easy to tell apart.
