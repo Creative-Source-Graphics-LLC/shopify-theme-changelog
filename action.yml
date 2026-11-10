@@ -1,0 +1,49 @@
+name: Shopify Theme Changelog
+description: Keep a CHANGELOG.md in your Shopify theme repo, with every push and commit recorded and theme editor saves labeled.
+author: Creative Source Graphics, LLC
+branding:
+  icon: book-open
+  color: black
+
+inputs:
+  file:
+    description: Path of the changelog file.
+    default: CHANGELOG.md
+  title:
+    description: Heading at the top of the file.
+    default: Changelog
+  label-theme-editor:
+    description: Label commits made by Shopify's GitHub integration (theme editor saves) and list the files they changed.
+    default: "true"
+  skip-settings-only:
+    description: Leave out theme editor commits that only change config/settings_data.json.
+    default: "false"
+  commit-message:
+    description: Message for the commit that updates the changelog. Commits with this message are never recorded.
+    default: Update CHANGELOG
+  push:
+    description: Commit and push the updated changelog. Set to "false" to only write the file.
+    default: "true"
+
+outputs:
+  entries:
+    description: Number of commits recorded for this push.
+    value: ${{ steps.log.outputs.entries }}
+
+runs:
+  using: composite
+  steps:
+    - id: log
+      shell: bash
+      run: bash "${{ github.action_path }}/changelog.sh"
+      env:
+        CL_FILE: ${{ inputs.file }}
+        CL_TITLE: ${{ inputs.title }}
+        CL_LABEL_EDITOR: ${{ inputs.label-theme-editor }}
+        CL_SKIP_SETTINGS: ${{ inputs.skip-settings-only }}
+        CL_MESSAGE: ${{ inputs.commit-message }}
+        CL_PUSH: ${{ inputs.push }}
+        CL_BEFORE: ${{ github.event.before }}
+        CL_AFTER: ${{ github.sha }}
+        CL_BRANCH: ${{ github.ref_name }}
+        CL_ACTOR: ${{ github.actor }}
